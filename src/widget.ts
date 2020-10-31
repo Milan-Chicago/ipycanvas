@@ -149,6 +149,13 @@ class CanvasModel extends DOMWidgetModel {
 
     const args: any[] = command.args;
     switch (command.name) {
+      case 'sleep':
+        this.forEachView((view: CanvasView) => {
+          view.updateCanvas();
+        });
+
+        await new Promise(resolve => setTimeout(resolve, args[0]));;
+        break;
       case 'fillRect':
         this.fillRect(args[0], args[1], args[2], args[3]);
         break;

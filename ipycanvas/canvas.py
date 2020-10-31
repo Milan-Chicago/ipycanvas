@@ -234,6 +234,9 @@ class Canvas(_CanvasBase):
 
         self.on_msg(self._handle_frontend_event)
 
+    def sleep(self, time):
+        self._send_canvas_command('sleep', (time, ))
+
     # Rectangles methods
     def fill_rect(self, x, y, width, height=None):
         """Draw a filled rectangle of size ``(width, height)`` at the ``(x, y)`` position."""
